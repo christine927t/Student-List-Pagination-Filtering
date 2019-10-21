@@ -42,13 +42,8 @@ function showPage(list, page){
    for (let i = 0; i < list.length; i+=1){
       let li = list[i];
       if (li >= startIndex && li <= endIndex){
-      //list[i].style.backgroundColor = 'blue';
-      //list[i].display= 'none';
       console.log(li);
-      //let li = list[i];
-      li.style.display = '';
-      //li.style.display = 'none';   
-                        
+      li.style.display = '';                      
       }
    
    }
