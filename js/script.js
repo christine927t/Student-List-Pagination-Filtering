@@ -35,21 +35,21 @@ let page;
        "invoke" the function 
 ***/
 function showPage(list, page){
-   let startIndex=(page * 10) - 10; //10
-   let endIndex= page * 10; //20
+   let startIndex=(page * 10) - 10; 
+   let endIndex= page * 10;
    
 
    for (let i = 0; i < list.length; i+=1){
       let li = list[i];
-      if (li >= startIndex && li <= endIndex){
+      if (i >= startIndex && i < endIndex){
       console.log(li);
-      li.style.display = '';                      
-      }
+      li.style.display = 'block';                      
+      } else li.style.display = 'none';
    
    }
    
 }
-showPage(list,2);
+showPage(list,1);
 
 
 
