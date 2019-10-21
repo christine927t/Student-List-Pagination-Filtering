@@ -15,7 +15,10 @@ FSJS project 2 - List Filter and Pagination
    going to create. A good general rule of thumb is if the variable 
    will only be used inside of a function, then it can be locally 
    scoped to that function.
+
 ***/
+let list = document.getElementsByClassName("student-item");
+let page = 0;
 
 
 
@@ -34,7 +37,19 @@ FSJS project 2 - List Filter and Pagination
        that will be passed into the parens later when you call or 
        "invoke" the function 
 ***/
+function showPage(list, page){
+   let startIndex=(page * 10) - 10;
+   let endIndex= page * 10;
+   
+   for (let i = 0; i < list.length; i+=1){
+      if (list[i] >= startIndex || list[i] <= endIndex)
+      list[i].style.backgroundColor = 'blue';
+   }
 
+
+
+}
+showPage(1,4);
 
 
 
