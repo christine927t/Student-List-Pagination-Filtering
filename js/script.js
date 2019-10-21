@@ -18,10 +18,7 @@ FSJS project 2 - List Filter and Pagination
 
 ***/
 let list = document.getElementsByClassName("student-item");
-let page = 0;
-
-
-
+let page;
 
 /*** 
    Create the `showPage` function to hide all of the items in the 
@@ -38,18 +35,26 @@ let page = 0;
        "invoke" the function 
 ***/
 function showPage(list, page){
-   let startIndex=(page * 10) - 10;
-   let endIndex= page * 10;
+   let startIndex=(page * 10) - 10; //10
+   let endIndex= page * 10; //20
    
+
    for (let i = 0; i < list.length; i+=1){
-      if (list[i] >= startIndex || list[i] <= endIndex)
-      list[i].style.backgroundColor = 'blue';
+      let li = list[i];
+      if (li >= startIndex && li <= endIndex){
+      //list[i].style.backgroundColor = 'blue';
+      //list[i].display= 'none';
+      console.log(li);
+      //let li = list[i];
+      li.style.display = '';
+      //li.style.display = 'none';   
+                        
+      }
+   
    }
-
-
-
+   
 }
-showPage(1,4);
+showPage(list,2);
 
 
 
