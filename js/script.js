@@ -18,13 +18,9 @@ FSJS project 2 - List Filter and Pagination
 
 ***/
 let list = document.getElementsByClassName("student-item");
-let page;
+let pageNum;
 
-const pageDiv = document.getElementsByClassName('page');
-const div = document.createElement('div');
-const ul = document.createElement('ul');
-const li = document.createElement('li');
-const a = document.createElement('a');
+
 
 
 /*** 
@@ -41,9 +37,9 @@ const a = document.createElement('a');
        that will be passed into the parens later when you call or 
        "invoke" the function 
 ***/
-function showPage(list, page){
-   let startIndex=(page * 10) - 10; 
-   let endIndex= page * 10;
+function showPage(list, pageNum){
+   let startIndex=(pageNum * 10) - 10; 
+   let endIndex= pageNum * 10;
    
 
    for (let i = 0; i < list.length; i+=1){
@@ -60,16 +56,21 @@ showPage(list,1);
 
 //appendPageLinks function
 const appendPageLinks = (list) =>{
-   pageDiv.appendChild(div);
+   let pageDiv = document.getElementsByTagName('page');
+   let div = document.createElement('div');
    div.className='pagination';
+   pageDiv.appendChild(div);
+   
+   let ul = document.createElement('ul');
    div.appendChild(ul);
 
    for (let i = 0; i < list.length/10; i +=1){
+      let li = document.createElement('li');
+      ul.appendChild(li);
+      let a = document.createElement('a');
+      li.appendChild(a);
       li.textContent = i;
       a.textContent = i;
-      pagination.appendChild(ul);
-      ul.appendChild(li);
-      li.appendChild(a);
       a.addEventListener('click', (e) => {
          showPage(list,pageDiv.value);
       })
@@ -78,8 +79,6 @@ const appendPageLinks = (list) =>{
 
 }
 appendPageLinks(list);
-
-
 
 
 // Remember to delete the comments that came with this file, and replace them with your own code comments.
