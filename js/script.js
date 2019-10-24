@@ -45,14 +45,13 @@ function showPage(list, pageNum){
    for (let i = 0; i < list.length; i+=1){
       let li = list[i];
       if (i >= startIndex && i < endIndex){
-      console.log(li);
-      li.style.display = 'block';                      
+      li.style.display = '';                      
       } else li.style.display = 'none';
    
    }
    
 }
-showPage(list,1);
+showPage(list,2);
 
 //appendPageLinks function
 const appendPageLinks = (list) =>{
@@ -68,21 +67,22 @@ const appendPageLinks = (list) =>{
       let li = document.createElement('li');
       ul.appendChild(li);
       let a = document.createElement('a');
-      li.className = 'active';
-      li.textContent = i;
       li.appendChild(a);
-      a.href=('#' + i);
-
-
-      //when pagination link is clicked
-      a.addEventListener('click', (e) => {
-         for (let i = 0; i < ul.length; i+=1){
-            e.target.className = ' ';
-         } 
-         e.target.className= 'active';
-         showPage(list,pageDiv.textContent);
-      })
+      a.className = 'active';
+      a.href=('#');
+      a.textContent = i;
+   }  
+   
+   let a = document.querySelectorAll('a'); //moved to select all a elements
+    
+     for (let i = 0; i < a.length; i+=1){
+         a.addEventListener('click', (e) => {
+         e.target.className = 'active';
+      }) //e.target.className= ' ';
    }
+   
+   showPage(list,pageDiv.textContent);
+   
 }
 appendPageLinks(list);
 
