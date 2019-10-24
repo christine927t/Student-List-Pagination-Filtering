@@ -51,7 +51,7 @@ function showPage(list, pageNum){
    }
    
 }
-showPage(list,2);
+showPage(list,1);
 
 //appendPageLinks function
 const appendPageLinks = (list) =>{
@@ -73,16 +73,16 @@ const appendPageLinks = (list) =>{
       a.textContent = i;
    }  
    
-   let a = document.querySelectorAll('a'); //moved to select all a elements
-    
-     for (let i = 0; i < a.length; i+=1){
-         a.addEventListener('click', (e) => {
-         e.target.className = 'active';
-      }) //e.target.className= ' ';
+   let a = document.querySelectorAll('a');
+   for (let i = 0; i < a.length; i+=1){
+      a[i].addEventListener('click', (e) => {
+         showPage(list,a[i]);
+      })
    }
-   
-   showPage(list,pageDiv.textContent);
-   
+   for (let i = 0; i < a.length; i+=1){
+      a[i].className = 'none';
+   } a.className ='active';
+
 }
 appendPageLinks(list);
 
