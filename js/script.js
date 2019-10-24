@@ -56,27 +56,33 @@ showPage(list,1);
 
 //appendPageLinks function
 const appendPageLinks = (list) =>{
-   let pageDiv = document.getElementsByTagName('page');
+   let pageDiv = document.querySelector('.page');
    let div = document.createElement('div');
    div.className='pagination';
    pageDiv.appendChild(div);
-   
    let ul = document.createElement('ul');
    div.appendChild(ul);
 
-   for (let i = 0; i < list.length/10; i +=1){
+   let listLength = Math.ceil(list.length/10);
+   for (let i = 1; i <= listLength; i +=1){
       let li = document.createElement('li');
       ul.appendChild(li);
       let a = document.createElement('a');
-      li.appendChild(a);
+      li.className = 'active';
       li.textContent = i;
-      a.textContent = i;
+      li.appendChild(a);
+      a.href=('#' + i);
+
+
+      //when pagination link is clicked
       a.addEventListener('click', (e) => {
-         showPage(list,pageDiv.value);
+         for (let i = 0; i < ul.length; i+=1){
+            e.target.className = ' ';
+         } 
+         e.target.className= 'active';
+         showPage(list,pageDiv.textContent);
       })
    }
-
-
 }
 appendPageLinks(list);
 
