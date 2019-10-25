@@ -51,7 +51,7 @@ function showPage(list, pageNum){
    }
    
 }
-showPage(list,1);
+showPage(list,pageNum);
 
 //appendPageLinks function
 const appendPageLinks = (list) =>{
@@ -76,7 +76,7 @@ const appendPageLinks = (list) =>{
    let a = document.querySelectorAll('a');
    for (let i = 0; i < a.length; i+=1){
       a[i].addEventListener('click', (e) => {
-         showPage(list,a[i]);
+         showPage(list,i);
       })
    }
    for (let i = 0; i < a.length; i+=1){
