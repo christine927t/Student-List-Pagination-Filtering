@@ -51,8 +51,6 @@ function showPage(list, pageNum){
    }
    
 }
-showPage(list,pageNum);
-
 //appendPageLinks function
 const appendPageLinks = (list) =>{
    let pageDiv = document.querySelector('.page');
@@ -68,23 +66,19 @@ const appendPageLinks = (list) =>{
       ul.appendChild(li);
       let a = document.createElement('a');
       li.appendChild(a);
-      a.className = 'active';
+      //a.className = 'active';
       a.href=('#');
       a.textContent = i;
-   }  
-   
-   let a = document.querySelectorAll('a');
-   for (let i = 0; i < a.length; i+=1){
-      a[i].addEventListener('click', (e) => {
-         showPage(list,i);
-      })
+      let aList = document.querySelectorAll('a'); 
+      for (let j = 1; j < aList.length; j++){
+         a.addEventListener('click', (event) => {
+         showPage(list,j);
+            for (let k = 0; k < aList.length; k++){
+               aList.className = ' ';
+            } event.target.className ='active';
+         })
+      }
    }
-   for (let i = 0; i < a.length; i+=1){
-      a[i].className = 'none';
-   } a.className ='active';
-
 }
+showPage(list, 1);
 appendPageLinks(list);
-
-
-// Remember to delete the comments that came with this file, and replace them with your own code comments.
