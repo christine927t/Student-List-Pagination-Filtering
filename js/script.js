@@ -66,15 +66,19 @@ const appendPageLinks = (list) =>{
       ul.appendChild(li);
       let a = document.createElement('a');
       li.appendChild(a);
+      let aFirst = document.querySelector('a');
+      aFirst.className = 'active';
       //a.className = 'active';
       a.href=('#');
       a.textContent = i;
-      let aList = document.querySelectorAll('a'); 
-      for (let j = 1; j < aList.length; j++){
+      let aLista = document.querySelectorAll('a'); 
+
+      for (let j = 1; j < aLista.length; j++){
          a.addEventListener('click', (event) => {
+         let aList = document.querySelectorAll('a'); 
          showPage(list,j);
             for (let k = 0; k < aList.length; k++){
-               aList.className = ' ';
+               aList[k].className = ' ';
             } event.target.className ='active';
          })
       }
