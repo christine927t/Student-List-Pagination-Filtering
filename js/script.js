@@ -71,9 +71,10 @@ const appendPageLinks = (list) =>{
       //a.className = 'active';
       a.href=('#');
       a.textContent = i;
-      let aList = document.querySelectorAll('a'); 
-      for (let j = 1; j < aList.length; j++){
+      let aListA = document.querySelectorAll('a'); 
+      for (let j = 1; j < aListA.length; j++){
          a.addEventListener('click', (event) => {
+         let aList = document.querySelectorAll('a'); //redunant but code doesn't function properly with only one of these declarations
          showPage(list,j);
             for (let k = 0; k < aList.length; k++){
                aList[k].className = ' ';
