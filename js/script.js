@@ -40,14 +40,11 @@ let pageNum;
 function showPage(list, pageNum){
    let startIndex=(pageNum * 10) - 10; 
    let endIndex= pageNum * 10;
-   
-
-   for (let i = 0; i < list.length; i+=1){
+   for (let i = 0; i < list.length; i++){
       let li = list[i];
       if (i >= startIndex && i < endIndex){
       li.style.display = '';                      
       } else li.style.display = 'none';
-   
    }
    
 }
@@ -60,22 +57,23 @@ const appendPageLinks = (list) =>{
    let ul = document.createElement('ul');
    div.appendChild(ul);
 
-   let listLength = Math.ceil(list.length/10);
-   for (let i = 1; i <= listLength; i +=1){
+   let listLength = (list.length/10);
+   for (let i = 0; i <= listLength; i ++){
       let li = document.createElement('li');
       ul.appendChild(li);
       let a = document.createElement('a');
       li.appendChild(a);
       let aFirst = document.querySelector('a');
       aFirst.className = 'active';
-      //a.className = 'active';
       a.href=('#');
-      a.textContent = i;
+      a.textContent = i+1;
+      console.log(listLength);
       let aListA = document.querySelectorAll('a'); 
-      for (let j = 1; j < aListA.length; j++){
+      for (let j = 0; j < aListA.length; j++){
          a.addEventListener('click', (event) => {
          let aList = document.querySelectorAll('a'); //redunant but code doesn't function properly with only one of these declarations
          showPage(list,j);
+         console.log(aList);
             for (let k = 0; k < aList.length; k++){
                aList[k].className = ' ';
             } event.target.className ='active';
