@@ -8,6 +8,7 @@ let pageNum;
 let pageDiv = document.querySelector('.page');
 let searchInput = document.createElement('input');
 let button = document.createElement('button');
+let text;
 
 //showPage function - determines what index range of students to pull
 const showPage = (list, pageNum) => {
@@ -52,7 +53,7 @@ const appendPageLinks = (list) => {
    }
 }
 
-const createSearch = () => {
+const createSearch = () => { //creates search div and appends div, input and button to parent element; sets attributes for search elements
    let searchDiv = document.createElement('div'); //creates div to hold search function
    let pageHeader = document.querySelector('.page-header'); //gets access to page-header (parent div)
 
@@ -67,10 +68,10 @@ const createSearch = () => {
 
 createSearch();
 
-const runSearch = (text,list) => {
+const runSearch = (text,list) => { //the search executed when 'Search' button is clicked
    for (let i = 0; i<list.length; i++){
-      const text = searchInput.value;
-      list[i].style.display= 'none'; //searchInput.value.length !== 0 &&//
+      text = searchInput.value;
+      list[i].style.display= 'none';
       if (list[i].textContent.toLowerCase().includes(text.toLowerCase())){
          list[i].value.className = 'active';
       }
@@ -81,7 +82,7 @@ button.addEventListener('click', (event) => {
    event.preventDefault();
    runSearch(text,list);
    console.log('Submit button is .functional!');
-   console.log(search.value);
+   console.log(text);
 });
 
 
