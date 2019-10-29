@@ -6,11 +6,11 @@ FSJS project 2 - List Filter and Pagination
 let list = document.getElementsByClassName("student-item");
 let pageNum;
 let pageDiv = document.querySelector('.page');
+let search;
 
-const search = document.getElementsByClassName('student-search');
-const submit = document.getElementsByTagName('button');
-let searchInput;
-let button = document.createElement('button'); //creates search button
+//const search = document.getElementsByClassName('student-search');
+//const submit = document.getElementsByTagName('button');
+//let searchInput;
 
 
 
@@ -29,7 +29,6 @@ const showPage = (list, pageNum) => {
 }
 //appendPageLinks function - dynamically creates div,ul,li & a elements;
 const appendPageLinks = (list) => {
-   //let pageDiv = document.querySelector('.page');
    let div = document.createElement('div');
    div.className='pagination';
    pageDiv.appendChild(div);
@@ -60,37 +59,46 @@ const appendPageLinks = (list) => {
 }
 
 const searchFunc = (searchInput,list) => {
-   let searchDiv = document.createElement('div'); //creates search div; appends it before student-list ul
-   searchDiv.className = 'student-search';
-   pageDiv.appendChild(searchDiv);
-   let studentList = document.querySelector('.student-list');
-   let insertSearchDiv = pageDiv.insertBefore(searchDiv,studentList);
+   //console.log(search);
+   //const searchFunc = (searchInput,list) => {
+   let searchDiv = document.createElement('div'); //creates div to hold search function
+   let searchInput = document.createElement('input'); //creates input box
+   let button = document.createElement('button'); //creates search button
+   let pageHeader = document.querySelector('.page-header'); //gets access to page-header
 
-   searchInput = document.createElement('input'); //creates input box
-   searchInput.placeholder ='Search for students...';
+   pageHeader.appendChild(searchDiv);
    searchDiv.appendChild(searchInput);
-
-   button.textContent='Search';
    searchDiv.appendChild(button);
 
-   button.addEventListener('click', (event) => {
-      event.preventDefault();
-      for (let i = 0; i<list.length; i++){
+   searchDiv.className = 'student-search';
+   searchInput.placeholder ='Search for students...';
+   button.textContent='Search';
+
+   for (let i = 0; i<list.length; i++){
+      const searchText = searchInput.value.textContent;
       list[i].style.display= 'none'; //searchInput.value.length !== 0 &&//
-         if (list[i].textContent.toLowerCase().includes(searchInput.value.toLowerCase())){
+         if (list[i].textContent.toLowerCase().includes(searchText.value.toLowerCase())){
             list[i].value.className = 'active';
          }
       }
-      console.log('Submit button is .functional!');
-      console.log(searchInput.value);
-
-
-   });
 }
+searchFunc(searchInput,list);
+
+
+button.addEventListener('click', (event) => {
+   event.preventDefault();
+   searchFunc(searchInput,list);
+   console.log('Submit button is .functional!');
+   //console.log(search.value);
+
+
+});
+
 
 showPage(list, 1);
 appendPageLinks(list);
-searchFunc(searchInput,list);
+//searchFunc(search,list);
+//searchFunc(searchInput,list);
 
 
 // /* submit listener */
