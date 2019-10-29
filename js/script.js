@@ -6,14 +6,8 @@ FSJS project 2 - List Filter and Pagination
 let list = document.getElementsByClassName("student-item");
 let pageNum;
 let pageDiv = document.querySelector('.page');
-let search;
-
-//const search = document.getElementsByClassName('student-search');
-//const submit = document.getElementsByTagName('button');
-//let searchInput;
-
-
-
+let searchInput = document.createElement('input');
+let button = document.createElement('button');
 
 //showPage function - determines what index range of students to pull
 const showPage = (list, pageNum) => {
@@ -58,13 +52,9 @@ const appendPageLinks = (list) => {
    }
 }
 
-const searchFunc = (searchInput,list) => {
-   //console.log(search);
-   //const searchFunc = (searchInput,list) => {
+const createSearch = () => {
    let searchDiv = document.createElement('div'); //creates div to hold search function
-   let searchInput = document.createElement('input'); //creates input box
-   let button = document.createElement('button'); //creates search button
-   let pageHeader = document.querySelector('.page-header'); //gets access to page-header
+   let pageHeader = document.querySelector('.page-header'); //gets access to page-header (parent div)
 
    pageHeader.appendChild(searchDiv);
    searchDiv.appendChild(searchInput);
@@ -73,32 +63,31 @@ const searchFunc = (searchInput,list) => {
    searchDiv.className = 'student-search';
    searchInput.placeholder ='Search for students...';
    button.textContent='Search';
-
-   for (let i = 0; i<list.length; i++){
-      const searchText = searchInput.value.textContent;
-      list[i].style.display= 'none'; //searchInput.value.length !== 0 &&//
-         if (list[i].textContent.toLowerCase().includes(searchText.value.toLowerCase())){
-            list[i].value.className = 'active';
-         }
-      }
 }
-searchFunc(searchInput,list);
 
+createSearch();
+
+const runSearch = (text,list) => {
+   for (let i = 0; i<list.length; i++){
+      const text = searchInput.value;
+      list[i].style.display= 'none'; //searchInput.value.length !== 0 &&//
+      if (list[i].textContent.toLowerCase().includes(text.toLowerCase())){
+         list[i].value.className = 'active';
+      }
+   }
+}
 
 button.addEventListener('click', (event) => {
    event.preventDefault();
-   searchFunc(searchInput,list);
+   runSearch(text,list);
    console.log('Submit button is .functional!');
-   //console.log(search.value);
-
-
+   console.log(search.value);
 });
 
 
 showPage(list, 1);
 appendPageLinks(list);
-//searchFunc(search,list);
-//searchFunc(searchInput,list);
+
 
 
 // /* submit listener */
