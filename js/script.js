@@ -9,6 +9,8 @@ let pageDiv = document.querySelector('.page');
 let searchInput = document.createElement('input');
 let button = document.createElement('button');
 let text;
+let searchDiv = document.createElement('div'); //creates div to hold search function
+let pageHeader = document.querySelector('.page-header'); //gets access to page-header (parent div)
 
 //showPage function - determines what index range of students to pull
 const showPage = (list, pageNum) => {
@@ -16,7 +18,7 @@ const showPage = (list, pageNum) => {
    let endIndex= pageNum * 10;
    for (let i = 0; i < list.length; i++){
       let li = list[i];
-      if (i >= startIndex && i <= endIndex){
+      if (i >= startIndex && i < endIndex){
       li.style.display = '';                      
       } else li.style.display = 'none';
    }
@@ -53,9 +55,8 @@ const appendPageLinks = (list) => {
    }
 }
 
-const createSearch = () => { //creates search div and appends div, input and button to parent element; sets attributes for search elements
-   let searchDiv = document.createElement('div'); //creates div to hold search function
-   let pageHeader = document.querySelector('.page-header'); //gets access to page-header (parent div)
+const createSearch = () => { //appends div, input and button to parent element; sets attributes for search elements
+
 
    pageHeader.appendChild(searchDiv);
    searchDiv.appendChild(searchInput);
@@ -63,6 +64,7 @@ const createSearch = () => { //creates search div and appends div, input and but
 
    searchDiv.className = 'student-search';
    searchInput.placeholder ='Search for students...';
+   //searchInput.value = input.value;
    button.textContent='Search';
 }
 
@@ -70,16 +72,21 @@ createSearch();
 
 const runSearch = (text,list) => { //the search executed when 'Search' button is clicked
    for (let i = 0; i<list.length; i++){
-      text = searchInput.value;
       list[i].style.display= 'none';
+      var storageArray = [];
       if (list[i].textContent.toLowerCase().includes(text.toLowerCase())){
-         list[i].value.className = 'active';
+         storageArray.push(list[i]);
       }
-   }
-}
+      let storeLen = Math.ceil(storageArray.length/10);
+      showPage(storageArray, storeLen);
+         //appendPageLinks(storageArray);
+       
+   } 
+} 
 
 button.addEventListener('click', (event) => {
    event.preventDefault();
+   text = searchInput.value;  
    runSearch(text,list);
    console.log('Submit button is .functional!');
    console.log(text);
