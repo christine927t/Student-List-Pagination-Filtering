@@ -2,15 +2,18 @@
 Treehouse Techdegree:
 FSJS project 2 - List Filter and Pagination
 ******************************************/
-   
+
+/*gets HTML elements for student list functionality*/   
 let list = document.getElementsByClassName("student-item");
 let pageNum;
 let pageDiv = document.querySelector('.page');
+
+/*creates search elements*/
 let searchInput = document.createElement('input');
 let button = document.createElement('button');
-let text;
-let searchDiv = document.createElement('div'); //creates div to hold search function
-let pageHeader = document.querySelector('.page-header'); //gets access to page-header (parent div)
+let searchDiv = document.createElement('div'); 
+
+let pageHeader = document.querySelector('.page-header'); 
 
 //showPage function - determines what index range of students to pull
 const showPage = (list, pageNum) => {
@@ -22,8 +25,8 @@ const showPage = (list, pageNum) => {
       li.style.display = '';                      
       } else li.style.display = 'none';
    }
-   
 }
+
 //appendPageLinks function - dynamically creates div,ul,li & a elements;
 const appendPageLinks = (list) => {
    //check to see if pagniation div exists
@@ -49,7 +52,7 @@ const appendPageLinks = (list) => {
       a.textContent = i+1;
       let aListA = document.querySelectorAll('a'); 
       for (let j = 0; j < aListA.length; j++){
-         a.addEventListener('click', (event) => { //click handler controls which records are shown when page number is clicked
+         a.addEventListener('click', (event) => { 
          let aList = document.querySelectorAll('a'); 
          showPage(list,event.target.textContent); 
             for (let k = 0; k < aList.length; k++){
@@ -60,7 +63,8 @@ const appendPageLinks = (list) => {
    }
 }
 
-const createSearch = () => { //appends div, input and button to parent element; sets attributes for search elements
+/*appends search elements: div, input and button to parent element; sets attributes for each*/
+const createSearch = () => { 
    pageHeader.appendChild(searchDiv);
    searchDiv.appendChild(searchInput);
    searchDiv.appendChild(button);
@@ -68,11 +72,11 @@ const createSearch = () => { //appends div, input and button to parent element; 
    searchDiv.className = 'student-search';
    searchInput.placeholder ='Search for students...';
    button.textContent='Search';
-}
+};
+//createSearch();
 
-createSearch();
-
-const runSearch = (text,list) => { //the search executed when 'Search' button is clicked
+/*the search executed when 'Search' button is clicked*/
+const runSearch = (text,list) => { 
    var storageArray = [];
    for (let i = 0; i<list.length; i++){
       list[i].style.display= 'none';
@@ -83,28 +87,24 @@ const runSearch = (text,list) => { //the search executed when 'Search' button is
    } 
    showPage(storageArray, 1);
    appendPageLinks(storageArray);
-} 
+};
 
+/*click event listener for search*/
 button.addEventListener('click', (event) => {
    event.preventDefault();
    text = searchInput.value;  
    runSearch(text,list);
-   console.log('Submit button is .functional!');
-   console.log(text);
 });
 
+/* keyup event listener */
+searchInput.addEventListener('keyup', (event) => {
+   text = searchInput.value; 
+   runSearch(text,list);
+});
 
+createSearch();
 showPage(list, 1);
 appendPageLinks(list);
 
 
 
-// /* submit listener */
-// search.addEventListener('keyup', () => {
-//    searchFunc(search,tableCells);
-
-//   // Invoke your search function here - Arguments: search, tableCells
-
-
-//   // Helpful log statement to test function
-//   console.log('Keyup event on the Search input is functional!');
