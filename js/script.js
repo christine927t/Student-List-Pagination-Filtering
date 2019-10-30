@@ -26,6 +26,11 @@ const showPage = (list, pageNum) => {
 }
 //appendPageLinks function - dynamically creates div,ul,li & a elements;
 const appendPageLinks = (list) => {
+   //check to see if pagniation div exists
+   let getPag = document.querySelector('.pagination');
+   if (document.contains((getPag))){
+      getPag.remove();
+   } 
    let div = document.createElement('div');
    div.className='pagination';
    pageDiv.appendChild(div);
@@ -56,32 +61,28 @@ const appendPageLinks = (list) => {
 }
 
 const createSearch = () => { //appends div, input and button to parent element; sets attributes for search elements
-
-
    pageHeader.appendChild(searchDiv);
    searchDiv.appendChild(searchInput);
    searchDiv.appendChild(button);
 
    searchDiv.className = 'student-search';
    searchInput.placeholder ='Search for students...';
-   //searchInput.value = input.value;
    button.textContent='Search';
 }
 
 createSearch();
 
 const runSearch = (text,list) => { //the search executed when 'Search' button is clicked
+   var storageArray = [];
    for (let i = 0; i<list.length; i++){
       list[i].style.display= 'none';
-      var storageArray = [];
       if (list[i].textContent.toLowerCase().includes(text.toLowerCase())){
          storageArray.push(list[i]);
       }
-      let storeLen = Math.ceil(storageArray.length/10);
-      showPage(storageArray, storeLen);
-         //appendPageLinks(storageArray);
-       
+      let storeLen = Math.ceil(storageArray.length/10);      
    } 
+   showPage(storageArray, 1);
+   appendPageLinks(storageArray);
 } 
 
 button.addEventListener('click', (event) => {
