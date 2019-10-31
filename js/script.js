@@ -78,6 +78,10 @@ const createSearch = () => {
 
 /*the search executed when 'Search' button is clicked*/
 const runSearch = (text,list) => { 
+   const noRes = document.getElementsByTagName('h2')[1];
+   if (document.contains((noRes))){
+      noRes.remove();
+   }
    var storageArray = [];
    for (let i = 0; i<list.length; i++){
       list[i].style.display= 'none';
@@ -89,8 +93,8 @@ const runSearch = (text,list) => {
          console.log(storageArray.length);
          let noResults = document.createElement('h2');
          noResults.textContent = 'No Results Found';
-         noResults.className = '.page-header';
-         searchDiv.appendChild(noResults);
+         let studentLi = document.querySelector('.student-list');
+         pageDiv.insertBefore(noResults, studentLi);
    } 
    showPage(storageArray, 1);
    appendPageLinks(storageArray);
