@@ -21,5 +21,6 @@ I added the search feature to the page-header div which allows users
 to search for a specific student name. The keyup feature I added will
 search as the user is typing instead of just when the 'Search' button is clicked.
 The pagination links also display according to how many record results were found.
+A 'No results found' h2 displays when the search does not return an results.
 
 
