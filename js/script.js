@@ -1,6 +1,8 @@
 /******************************************
-Treehouse Techdegree:
+Treehouse Techdegree by Christine Treacy:
 FSJS project 2 - List Filter and Pagination
+***********Exceeds Expectations************
+
 ******************************************/
 
 /*gets HTML elements for student list functionality*/   
@@ -73,7 +75,6 @@ const createSearch = () => {
    searchInput.placeholder ='Search for students...';
    button.textContent='Search';
 };
-//createSearch();
 
 /*the search executed when 'Search' button is clicked*/
 const runSearch = (text,list) => { 
@@ -82,8 +83,14 @@ const runSearch = (text,list) => {
       list[i].style.display= 'none';
       if (list[i].textContent.toLowerCase().includes(text.toLowerCase())){
          storageArray.push(list[i]);
-      }
-      let storeLen = Math.ceil(storageArray.length/10);      
+      } 
+   }
+   if (storageArray.length === 0) { //checking for no search results
+         console.log(storageArray.length);
+         let noResults = document.createElement('h2');
+         noResults.textContent = 'No Results Found';
+         noResults.className = '.page-header';
+         searchDiv.appendChild(noResults);
    } 
    showPage(storageArray, 1);
    appendPageLinks(storageArray);
