@@ -1,5 +1,5 @@
 body{
-  background-color: #e1f1f6;
+  background-color: #84033e;
   font-family: Helvetica, sans-serif;
   color: #222;
 }
@@ -8,6 +8,7 @@ body{
   margin: 50px auto;
   width: 70%;
   background-color: #fff;
+  border: black solid 2px;
   border-radius: 5px;
   padding: 50px;
 }
@@ -20,7 +21,7 @@ body{
     font-size: 22px;
     text-transform: uppercase;
     font-weight: bold;
-    color: #555;
+    color: #84033e;
   }
 
   .page-header .student-search{
@@ -39,8 +40,8 @@ body{
       border: 1px solid #eaeaea;
       padding: 8px 15px;
       font-size: 14px;
-      background-color: #4ba6c3;
-      color: #fff
+      background-color: #024faf;
+      color: #fff;
     }
 
 .student-list{}
@@ -67,11 +68,11 @@ body{
       .student-details h3{
         margin: 4px 0 2px 0;
         font-weight: bold;
-        color: #4ba6c3;
+        color: #024faf;
       }
 
       .student-details .email{
-        color: #888;
+        color: #222;
         font-size: 14px;
       }
 
@@ -109,11 +110,12 @@ body{
       border-radius: 5px;
       padding: 3px 8px;
       text-decoration: none;
-      color: #4ba6c3;
+      color: #84033e;
     }
 
     .pagination li a.active,
     .pagination li a:hover{
-      background-color: #4ba6c3;
+      border: black solid 1px;
+      background-color: #84033e;
       color: #fff;
     }
