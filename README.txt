@@ -1,26 +1,14 @@
-# techdegree-project-2
- List Pagination and Filtering
-by Christine Treacy
-Aiming for Exceeds Expectations
+# **List Pagination and Filtering**
+## Live link: https://christine927t.github.io/Student-List-Pagination-Filtering/
+## *by Christine Treacy*
+### Treehouse FSJS Techdegree Project 2
 
-//Project description//
-The goal of this project was to create a searchable list of students, 
-paginate through the results and return a message to the user if no results were found.
+#### Description/Features: 
+This was my first attempt with DOM manipulation and traversal. For this app, I took a long list of students with their photo and information and added pagination to organize results and a search feature with keyup functionality. There is also an error message returned to the user if no results are found. 
 
-//Project techniques//
-This project had many components learned throughout unit 2
-They included: dynamically adding elements to the page, 
-adding attributes to those elements, targetting elements in the DOM, 
-creating functions, creating for loops and if statements to search through
-each student in the list or each page in the document. I also worked on traversing
-the DOM to append elements to their correct locations. Event listeners were 
-utilized for click and keyup events.
+## Built With:
+**HTML**
 
-//Extra credit features//
-I added the search feature to the page-header div which allows users
-to search for a specific student name. The keyup feature I added will
-search as the user is typing instead of just when the 'Search' button is clicked.
-The pagination links also display according to how many record results were found.
-A 'No results found' h2 displays when the search does not return an results.
+**CSS**
 
-
+**JavaScript**
